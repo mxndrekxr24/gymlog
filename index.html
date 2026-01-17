@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GymLog – Personal</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🏋️ GymLog</h1>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Add Workout</h2>
+
+    <label>Date</label>
+    <input type="date" id="date"/>
+
+    <label>Workout Type</label>
+    <select id="workoutType">
+      <option>Chest</option>
+      <option>Back</option>
+      <option>Legs</option>
+      <option>Shoulder</option>
+      <option>Arms</option>
+      <option>Cardio</option>
+    </select>
+
+    <label>Exercise</label>
+    <select id="exercise">
+      <option>Bench Press</option>
+      <option>Incline Bench Press</option>
+      <option>Dumbbell Fly</option>
+      <option>Push-ups</option>
+      <option>Cable Crossover</option>
+      <option>Lat Pulldown</option>
+      <option>Deadlift</option>
+      <option>Squat</option>
+    </select>
+
+    <input type="text" id="customExercise" placeholder="Or add custom exercise"/>
+
+    <div class="row">
+      <input type="number" id="sets" placeholder="Sets">
+      <input type="number" id="reps" placeholder="Reps">
+      <input type="number" id="weight" placeholder="Weight (kg)">
+    </div>
+
+    <label>Workout Duration (minutes)</label>
+    <input type="number" id="time" placeholder="Eg: 60">
+
+    <button onclick="saveWorkout()">Save Workout</button>
+  </section>
+
+  <section class="card">
+    <h2>Body Weight</h2>
+    <input type="number" id="bodyWeight" placeholder="Your weight (kg)">
+    <button onclick="saveBodyWeight()">Save Weight</button>
+  </section>
+
+  <section class="card">
+    <h2>History</h2>
+    <ul id="history"></ul>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
