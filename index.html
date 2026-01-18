@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vignesh’s Gym Log</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  Vignesh’s Gym Log
+</header>
+
+<main>
+
+  <!-- WORKOUT TAB -->
+  <section class="tab active" id="workoutTab">
+
+    <section class="card center">
+      <h2 id="todayWorkout">Today</h2>
+
+      <div class="ring" id="workoutRing">
+        <span id="workoutPercent">0%</span>
+      </div>
+
+      <p id="workoutCount">0 / 6 workouts</p>
+    </section>
+
+    <section class="card">
+      <h2>Add Workout</h2>
+
+      <input type="date" id="date">
+
+      <input type="text" id="exercise" placeholder="Exercise name">
+      <input type="text" id="sets" placeholder="Sets">
+      <input type="text" id="reps" placeholder="Reps">
+      <input type="text" id="weight" placeholder="Weight (kg)">
+      <input type="text" id="time" placeholder="Workout time (min)">
+
+      <button onclick="saveWorkout()">Save Workout</button>
+    </section>
+
+  </section>
+
+  <!-- WATER TAB -->
+  <section class="tab" id="waterTab">
+
+    <section class="card center">
+      <h2>Water Intake</h2>
+
+      <div class="ring" id="waterRing">
+        <span id="waterPercent">0%</span>
+      </div>
+
+      <p id="waterText">0 / 3000 ml</p>
+
+      <button onclick="addWater()">+ 250 ml</button>
+      <button class="secondary" onclick="resetWater()">Reset</button>
+    </section>
+
+  </section>
+
+  <!-- HISTORY TAB -->
+  <section class="tab" id="historyTab">
+
+    <section class="card">
+      <h2>Workout History</h2>
+      <ul id="history"></ul>
+    </section>
+
+  </section>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="active" onclick="openTab('workoutTab', this)">🏋️ Workout</button>
+  <button onclick="openTab('waterTab', this)">💧 Water</button>
+  <button onclick="openTab('historyTab', this)">📊 History</button>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>
