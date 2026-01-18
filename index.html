@@ -10,9 +10,7 @@
 
 <body>
 
-<header>
-  Vignesh’s Gym Log
-</header>
+<header>Vignesh’s Gym Log</header>
 
 <main>
 
@@ -34,11 +32,13 @@
 
       <input type="date" id="date">
 
-      <input type="text" id="exercise" placeholder="Exercise name">
-      <input type="text" id="sets" placeholder="Sets">
-      <input type="text" id="reps" placeholder="Reps">
-      <input type="text" id="weight" placeholder="Weight (kg)">
-      <input type="text" id="time" placeholder="Workout time (min)">
+      <label>Today’s Exercises</label>
+      <select id="exerciseSelect"></select>
+
+      <input type="number" id="sets" placeholder="Sets">
+      <input type="number" id="reps" placeholder="Reps">
+      <input type="number" id="weight" placeholder="Weight (kg)">
+      <input type="number" id="time" placeholder="Workout time (minutes)">
 
       <button onclick="saveWorkout()">Save Workout</button>
     </section>
@@ -76,12 +76,4 @@
 </main>
 
 <!-- BOTTOM NAV -->
-<nav class="bottom-nav">
-  <button class="active" onclick="openTab('workoutTab', this)">🏋️ Workout</button>
-  <button onclick="openTab('waterTab', this)">💧 Water</button>
-  <button onclick="openTab('historyTab', this)">📊 History</button>
-</nav>
-
-<script src="app.js"></script>
-</body>
-</html>
+<nav c
