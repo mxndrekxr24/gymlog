@@ -9,6 +9,53 @@ const split = {
   Sunday: "Rest & Stretching"
 };
 
+/* PRESET EXERCISES */
+const presets = {
+  Monday: [
+    "Bench Press",
+    "Incline Dumbbell Press",
+    "Chest Fly",
+    "Triceps Pushdown",
+    "Overhead Triceps Extension"
+  ],
+  Tuesday: [
+    "Lat Pulldown",
+    "Seated Cable Row",
+    "Deadlift",
+    "Barbell Curl",
+    "Hammer Curl"
+  ],
+  Wednesday: [
+    "Shoulder Press",
+    "Lateral Raise",
+    "Rear Delt Fly",
+    "Hanging Leg Raise",
+    "Crunches"
+  ],
+  Thursday: [
+    "Bench Press",
+    "Incline Dumbbell Press",
+    "Chest Fly",
+    "Triceps Dips",
+    "Skull Crushers"
+  ],
+  Friday: [
+    "Pull Ups",
+    "Barbell Row",
+    "Lat Pulldown",
+    "EZ Bar Curl",
+    "Concentration Curl"
+  ],
+  Saturday: [
+    "Squats",
+    "Leg Press",
+    "Leg Curl",
+    "Leg Extension",
+    "Calf Raises"
+  ],
+  Sunday: []
+};
+
 /* TAB SWITCH */
 function openTab(id, btn) {
   document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
@@ -18,13 +65,38 @@ function openTab(id, btn) {
   btn.classList.add("active");
 }
 
+/* LOAD TODAY PRESET */
+function loadTodayPreset() {
+  const day = new Date().toLocaleDateString("en-US", { weekday: "long" });
+  const select = document.getElementById("exerciseSelect");
+  select.innerHTML = "";
+
+  const list = presets[day];
+
+  if (!list || list.length === 0) {
+    const opt = document.createElement("option");
+    opt.text = "Rest Day 🧘";
+    select.appendChild(opt);
+    select.disabled = true;
+    return;
+  }
+
+  select.disabled = false;
+  list.forEach(ex => {
+    const opt = document.createElement("option");
+    opt.value = ex;
+    opt.text = ex;
+    select.appendChild(opt);
+  });
+}
+
 /* WORKOUTS */
 let workouts = JSON.parse(localStorage.getItem("workouts")) || [];
 
 function saveWorkout() {
   workouts.push({
     date: document.getElementById("date").value,
-    exercise: document.getElementById("exercise").value,
+    exercise: document.getElementById("exerciseSelect").value,
     sets: document.getElementById("sets").value,
     reps: document.getElementById("reps").value,
     weight: document.getElementById("weight").value,
@@ -37,7 +109,7 @@ function saveWorkout() {
   alert("Workout Saved 💪");
 }
 
-/* WORKOUT PROGRESS RING */
+/* WORKOUT PROGRESS */
 function updateWorkoutRing() {
   const total = 6;
   const done = workouts.length;
@@ -95,14 +167,16 @@ function updateWaterRing() {
   document.getElementById("waterText").innerText = `${water} / 3000 ml`;
 }
 
-/* TODAY WORKOUT */
+/* TODAY INFO */
 function showToday() {
   const day = new Date().toLocaleDateString("en-US", { weekday: "long" });
   document.getElementById("todayWorkout").innerText =
     `Today: ${day} — ${split[day]}`;
 }
 
+/* INIT */
 showToday();
+loadTodayPreset();
 updateWorkoutRing();
 updateWaterRing();
 showHistory();
